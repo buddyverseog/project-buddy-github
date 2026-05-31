@@ -1,0 +1,302 @@
+<!-- ===================================== -->
+<!-- PROJECT BUDDY NAVBAR -->
+<!-- ===================================== -->
+
+<nav class="navbar">
+
+    <div class="logo-section">
+
+        <img src="pb-logo.png" alt="Project Buddy Logo">
+
+        <span>
+            Project <b>Buddy</b>
+        </span>
+
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        ☰
+    </button>
+
+</nav>
+
+<!-- ===================================== -->
+<!-- DARK OVERLAY -->
+<!-- ===================================== -->
+
+<div
+    id="overlay"
+    class="overlay"
+    onclick="toggleMenu()">
+</div>
+
+<!-- ===================================== -->
+<!-- MOBILE SIDE MENU -->
+<!-- ===================================== -->
+
+<div id="mobileMenu" class="mobile-menu">
+
+    <button
+        class="close-btn"
+        onclick="toggleMenu()">
+        ✕
+    </button>
+
+    <a href="index.html">Home</a>
+
+    <a href="project/class/8/index.html">
+        Class 8
+    </a>
+
+    <a href="project/class/9/index.html">
+        Class 9
+    </a>
+
+    <a href="project/class/10/index.html">
+        Class 10
+    </a>
+
+    <a href="https://play.google.com/store/apps/details?id=com.solutionbuddy.app">
+        More Solutions
+    </a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="mailto:helpdesk.solutionbuddy@gmail.com">
+    Contact
+</a>
+    <a href="about.html">
+    About
+    </a>
+    
+
+</div>
+
+<style>
+
+/* ===================================== */
+/* NAVBAR */
+/* ===================================== */
+
+.navbar{
+
+    height:70px;
+
+    background:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 18px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+}
+
+/* ===================================== */
+/* LOGO SECTION */
+/* ===================================== */
+
+.logo-section{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.logo-section img{
+
+    width:42px;
+
+    height:42px;
+
+    object-fit:contain;
+}
+
+.logo-section span{
+
+    font-size:22px;
+
+    font-weight:600;
+
+    color:#111827;
+}
+
+.logo-section b{
+
+    color:#0D6EFD;
+}
+
+/* ===================================== */
+/* MENU BUTTON */
+/* ===================================== */
+
+.menu-btn{
+
+    border:none;
+
+    background:none;
+
+    font-size:30px;
+
+    cursor:pointer;
+}
+
+/* ===================================== */
+/* DARK OVERLAY */
+/* ===================================== */
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,0.4);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:0.3s;
+
+    z-index:1500;
+}
+
+.overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+/* ===================================== */
+/* SIDE MENU */
+/* ===================================== */
+
+.mobile-menu{
+
+    position:fixed;
+
+    top:0;
+
+    right:-330px;
+
+    width:280px;
+
+    height:100vh;
+
+    background:white;
+
+    transition:0.3s ease;
+
+    box-shadow:-5px 0 20px rgba(0,0,0,0.15);
+
+    border-top-left-radius:20px;
+
+    border-bottom-left-radius:20px;
+
+    z-index:2000;
+
+    padding:20px;
+}
+
+.mobile-menu.show{
+
+    right:0;
+}
+
+/* ===================================== */
+/* CLOSE BUTTON */
+/* ===================================== */
+
+.close-btn{
+
+    border:none;
+
+    background:none;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    margin-bottom:25px;
+
+    float:right;
+}
+
+/* ===================================== */
+/* MENU LINKS */
+/* ===================================== */
+
+.mobile-menu a{
+
+    display:block;
+
+    text-decoration:none;
+
+    color:#111827;
+
+    font-size:17px;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #eeeeee;
+
+    transition:0.2s;
+}
+
+.mobile-menu a:hover{
+
+    color:#0D6EFD;
+}
+
+/* ===================================== */
+/* MOBILE FRIENDLY */
+/* ===================================== */
+
+@media (max-width:480px){
+
+    .logo-section span{
+
+        font-size:20px;
+    }
+
+    .logo-section img{
+
+        width:40px;
+        height:40px;
+    }
+
+}
+
+</style>
+
+<script>
+
+/* ===================================== */
+/* OPEN / CLOSE MENU */
+/* ===================================== */
+
+function toggleMenu(){
+
+    document
+        .getElementById("mobileMenu")
+        .classList
+        .toggle("show");
+
+    document
+        .getElementById("overlay")
+        .classList
+        .toggle("show");
+}
+
+</script>

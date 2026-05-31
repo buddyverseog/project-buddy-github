@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Privacy Policy | Project Buddy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f8fafc;
+}
+
+/* PAGE HEADER */
+
+.page-header{
+
+    background:linear-gradient(
+        135deg,
+        #0D6EFD,
+        #071C5B
+    );
+
+    color:white;
+
+    text-align:center;
+
+    padding:35px 20px;
+
+   /* border-bottom-left-radius:25px;
+    border-bottom-right-radius:25px;*/
+}
+
+.page-header h1{
+
+    font-size:30px;
+}
+
+/* CONTENT */
+
+.container{
+
+    padding:20px;
+}
+
+.policy-card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+
+    line-height:1.9;
+}
+
+.policy-card h2{
+
+    color:#071C5B;
+
+    margin-top:25px;
+
+    margin-bottom:10px;
+}
+
+.policy-card p{
+
+    color:#555;
+
+    margin-bottom:10px;
+}
+
+.policy-card ul{
+
+    padding-left:20px;
+
+    color:#555;
+}
+
+.policy-card li{
+
+    margin-bottom:8px;
+}
+
+/* HOME BUTTON */
+
+.bottom{
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.home-btn{
+
+    display:inline-block;
+
+    background:#0D6EFD;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 24px;
+
+    border-radius:10px;
+
+    font-weight:600;
+}
+
+.home-btn:hover{
+
+    background:#071C5B;
+}
+
+.email{
+
+    color:#071C5B;
+
+    font-weight:600;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div id="navbar-container"></div>
+
+<!-- HEADER -->
+
+<section class="page-header">
+
+    <h1>Privacy Policy</h1>
+
+</section>
+
+<!-- CONTENT -->
+
+<div class="container">
+
+    <div class="policy-card">
+
+        <p>
+
+            <strong>Effective Date:</strong> May 31, 2026
+
+        </p>
+
+        <p>
+
+            Project Buddy is developed to provide Maharashtra Board students with easy access to chapter-wise science project solutions. We value your trust and are committed to protecting your privacy and ensuring a safe user experience.
+
+        </p>
+
+        <h2>Information We Collect</h2>
+
+        <p>
+            We do not collect, store, or share any personal information from users.
+        </p>
+
+        <ul>
+
+            <li>No user accounts or logins are required.</li>
+
+            <li>No names, email addresses, or contact details are requested.</li>
+
+            <li>No cookies, trackers, or third-party analytics tools are used.</li>
+
+        </ul>
+
+        <h2>Permissions</h2>
+
+        <p>
+
+            Project Buddy does not request or use any device permissions such as camera, location, microphone, storage, or contacts.
+
+        </p>
+
+        <h2>How We Use Your Data</h2>
+
+        <p>
+
+            Since no personal data is collected, no data is used, processed, stored, or shared.
+
+        </p>
+
+        <h2>Third-Party Links</h2>
+
+        <p>
+
+            Some content may contain links to educational websites or external resources. We do not control their content or privacy practices and recommend reviewing their policies independently.
+
+        </p>
+
+        <h2>Children's Privacy</h2>
+
+        <p>
+
+            Project Buddy is designed for students of all ages. Since we collect no personal information, it is suitable for children to use under the supervision of parents or educators.
+
+        </p>
+
+        <h2>Changes to This Policy</h2>
+
+        <p>
+
+            We may occasionally update this Privacy Policy. Any changes will be reflected on this page with an updated effective date.
+
+        </p>
+
+        <h2>Contact Us</h2>
+
+        <p>
+
+            If you have questions or concerns about this Privacy Policy, please contact us at:
+
+        </p>
+
+        <p class="email">
+
+            helpdesk.solutionbuddy@gmail.com
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- HOME BUTTON -->
+
+<div class="bottom">
+
+    <a href="index.html" class="home-btn">
+
+        ← Back to Home
+
+    </a>
+
+</div>
+
+<!-- LOAD NAVBAR -->
+
+<script>
+
+fetch("navbar.html")
+.then(response => response.text())
+.then(data => {
+    document.getElementById("navbar-container").innerHTML = data;
+});
+
+</script>
+
+<script>
+
+function toggleMenu(){
+
+    const menu =
+    document.getElementById("mobileMenu");
+
+    const overlay =
+    document.getElementById("overlay");
+
+    if(menu){
+        menu.classList.toggle("show");
+    }
+
+    if(overlay){
+        overlay.classList.toggle("show");
+    }
+}
+
+</script>
+
+</body>
+
+</html>

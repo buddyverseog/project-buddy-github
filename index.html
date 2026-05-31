@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Project Buddy By Solution Buddy </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    
+
+/`/* ============================== */
+/* RESET */
+/* ============================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#ffffff;
+}
+
+/* ============================== */
+/* HERO SECTION */
+/* ============================== */
+
+.hero{
+
+    background:linear-gradient(
+        135deg,
+        #0D6EFD,
+        #071C5B
+    );
+
+    color:white;
+
+    text-align:center;
+
+    padding:25px 20px 20px ;
+
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
+}
+
+.hero img{
+
+    width:65px;
+
+    margin-bottom:10px;
+}
+
+.hero h1{
+
+    font-size:26px;
+
+    margin-bottom:4px;
+}
+
+.hero p{
+
+    max-width:320px;
+
+    margin:0 auto 12px;
+
+    line-height:1.5;
+    text-align:center;
+
+}
+
+.explore-btn{
+
+    margin-top:1px;
+
+    background:white;
+
+    color:#0D6EFD;
+
+    border:none;
+
+    padding:12px 24px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+/* ============================== */
+/* COMMON SECTION */
+/* ============================== */
+
+.section{
+
+    padding:35px 20px;
+}
+
+.section-title{
+
+    text-align:center;
+
+    font-size:26px;
+
+    margin-bottom:20px;
+
+    color:#071C5B;
+}
+
+/* ============================== */
+/* CLASS CARDS */
+/* ============================== */
+
+.class-card{
+    display:block;
+
+    text-decoration:none;
+
+    color:#111827;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    text-align:center;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+
+    transition:0.3s;
+}
+
+.class-card:link,
+.class-card:visited{
+
+    color:#111827;
+
+    text-decoration:none;
+}
+
+.class-card:hover{
+
+    transform:translateY(-3px);
+}
+
+.class-card h3{
+
+    color:#071C5B;
+
+    margin-bottom:6px;
+}
+
+.class-card p{
+
+    color:#666;
+}
+
+/* ============================== */
+/* FEATURES */
+/* ============================== */
+
+.features-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+}
+
+.feature-card{
+
+    background:#f8fafc;
+
+    border-radius:16px;
+
+    padding:18px;
+}
+
+.feature-card h4{
+
+    margin-bottom:8px;
+
+    color:#071C5B;
+}
+
+/* ============================== */
+/* ABOUT */
+/* ============================== */
+
+.about-text{
+
+    text-align:center;
+
+    line-height:1.8;
+
+    color:#555;
+}
+
+/* ============================== */
+/* MORE SOLUTIONS */
+/* ============================== */
+
+.more-solutions{
+
+    margin:20px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        135deg,
+        #0D6EFD,
+        #071C5B
+    );
+
+    color:white;
+}
+
+.more-solutions h2{
+
+    margin-bottom:15px;
+}
+
+.more-solutions ul{
+
+    padding-left:20px;
+}
+
+.more-solutions li{
+
+    margin-bottom:10px;
+}
+
+.visit-btn{
+
+    margin-top:18px;
+
+    background:white;
+
+    color:#0D6EFD;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+/* ============================== */
+/* FOOTER */
+/* ============================== */
+
+footer{
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    color:#666;
+}
+
+footer h3{
+
+    color:#111827;
+
+    margin-bottom:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar loads here -->
+
+<div id="navbar-container"></div>
+
+<!-- Hero -->
+
+<section class="hero">
+
+    <img src="pb-logo.png" alt="Project Buddy Logo">
+
+    <h1>Project Buddy</h1>
+    <p>
+        Complete Science Project Solutions
+        for Maharashtra Board Classes 8–10
+    </p>
+
+
+    
+</section>
+
+<!-- Class Section -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Select Your Class
+    </h2>
+
+    <div class="class-grid">
+
+        <a href="project-class8.html" class="class-card">
+
+    <h3>Class 8</h3>
+
+    <p>Science Projects</p>
+
+</a>
+        <a href="project-class9.html" class="class-card">
+
+    <h3>Class 9</h3>
+
+    <p>Science Projects</p>
+
+</a>
+
+        <a href="project-class10.html" class="class-card">
+
+    <h3>Class 10</h3>
+
+    <p>Science Projects</p>
+
+</a>
+
+    </div>
+
+</section>
+
+<!-- Why Use Project Buddy -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Why Use Project Buddy?
+    </h2>
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+            <h4>Textbook-Based Projects</h4>
+            <p>Project topics directly from Maharashtra Board textbooks.</p>
+        </div>
+
+        <div class="feature-card">
+            <h4>PDF Download</h4>
+            <p>Download complete project files anytime.</p>
+        </div>
+
+        <div class="feature-card">
+            <h4>Chapter Wise</h4>
+            <p>Projects organized chapter-wise for easy navigation.</p>
+        </div>
+
+        <div class="feature-card">
+            <h4>Free Access</h4>
+            <p>All project solutions available without cost.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- About -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        About Project Buddy
+    </h2>
+
+    <p class="about-text">
+        Project Buddy provides chapter-wise science project solutions
+        for Maharashtra Board students from Class 8 to Class 10.
+    </p>
+
+</section>
+
+<!-- More Solutions -->
+
+<section class="more-solutions">
+
+    <h2>Need More Study Resources?</h2>
+
+    <ul>
+        <li>Textbook Solutions</li>
+        <li>Practical Book Solutions</li>
+        <li>Question Banks</li>
+        <li>MCQs</li>
+        <li>Previous Year Papers</li>
+    </ul>
+    <br>
+    <a
+    href="https://play.google.com/store/apps/details?id=com.solutionbuddy.app"
+    target="_blank"
+    class="visit-btn">
+
+        Get Solution Buddy App
+
+    </a>
+
+</section>
+
+<!-- Footer -->
+
+<footer>
+
+    <h3>Project Buddy</h3>
+
+    <p>Powered by Solution Buddy</p>
+
+</footer>
+
+<script>
+
+fetch("navbar.html")
+.then(response => response.text())
+.then(data => {
+    document.getElementById("navbar-container").innerHTML = data;
+});
+
+</script><script>
+
+function toggleMenu(){
+
+    const menu =
+    document.getElementById("mobileMenu");
+
+    const overlay =
+    document.getElementById("overlay");
+
+    menu.classList.toggle("show");
+    overlay.classList.toggle("show");
+}
+
+</script>
+
+
+</body>
+</html>

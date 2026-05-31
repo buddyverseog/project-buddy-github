@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Project Buddy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f8fafc;
+}
+
+.page-header{
+
+    background:linear-gradient(
+        135deg,
+        #0D6EFD,
+        #071C5B
+    );
+
+    color:white;
+
+    text-align:center;
+
+    padding:35px 20px;
+}
+
+.container{
+
+    padding:20px;
+}
+
+.card{
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    margin-bottom:15px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h2{
+
+    color:#071C5B;
+
+    margin-bottom:10px;
+}
+
+.card p{
+
+    line-height:1.8;
+}
+
+.home-btn{
+
+    display:inline-block;
+
+    background:#0D6EFD;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    margin-top:20px;
+}
+
+.bottom{
+
+    text-align:center;
+
+    padding-bottom:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="navbar-container"></div>
+
+
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>About Us</h2>
+
+        <p>
+            Project Buddy provides chapter-wise project solutions
+            for Maharashtra Board students. Our goal is to make
+            project work simple, organized and easily accessible.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Our Mission</h2>
+
+        <p>
+            To help students complete their projects with confidence
+            using easy-to-understand and well-structured solutions.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Powered by Solution Buddy</h2>
+
+        <p>
+            Project Buddy is a part of the Solution Buddy educational
+            ecosystem created to support students through quality
+            educational resources.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="bottom">
+
+    <a href="index.html" class="home-btn">
+       ← Back to Home
+    </a>
+
+</div>
+
+<script>
+
+fetch("navbar.html")
+.then(response => response.text())
+.then(data => {
+
+document.getElementById("navbar-container").innerHTML = data;
+
+});
+
+</script>
+
+<script>
+
+function toggleMenu(){
+
+const menu =
+document.getElementById("mobileMenu");
+
+const overlay =
+document.getElementById("overlay");
+
+if(menu){
+menu.classList.toggle("show");
+}
+
+if(overlay){
+overlay.classList.toggle("show");
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
