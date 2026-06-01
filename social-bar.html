@@ -1,28 +1,34 @@
 <div class="social-floating">
 
-    <a href="#" class="social-btn share" onclick="sharePage(); return false;" title="Share">
-        📤
+    <!-- Share -->
+    <a href="#" onclick="sharePage(); return false;"
+       class="social-btn">
+        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/share-fill.svg"
+             alt="Share">
     </a>
 
+    <!-- Telegram -->
     <a href="https://t.me/solutionbuddy10"
        target="_blank"
-       class="social-btn telegram"
-       title="Telegram">
-        ✈️
+       class="social-btn">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/telegram.svg"
+             alt="Telegram">
     </a>
 
+    <!-- Instagram -->
     <a href="https://www.instagram.com/solutionbuddy.in?igsh=c2d4bzE4bWRjY2Zu"
        target="_blank"
-       class="social-btn instagram"
-       title="Instagram">
-        📷
+       class="social-btn">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg"
+             alt="Instagram">
     </a>
 
+    <!-- Play Store -->
     <a href="https://play.google.com/store/apps/details?id=com.solutionbuddy.app"
        target="_blank"
-       class="social-btn playstore"
-       title="Download App">
-        ▶
+       class="social-btn">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googleplay.svg"
+             alt="Play Store">
     </a>
 
 </div>
@@ -35,32 +41,60 @@
     top:50%;
     transform:translateY(-50%);
     z-index:9999;
+
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:12px;
 }
 
 .social-btn{
-    width:50px;
-    height:50px;
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:50%;
-    text-decoration:none;
-    font-size:22px;
-    color:white;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
-    transition:0.3s;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
+
+    transition:.3s;
 }
 
 .social-btn:hover{
-    transform:scale(1.08);
+    transform:scale(1.1);
 }
 
-.share{background:#0D6EFD;}
-.telegram{background:#229ED9;}
-.instagram{background:#E1306C;}
-.playstore{background:#34A853;}
+.social-btn img{
+    width:34px;
+    height:34px;
+    object-fit:contain;
+}
+}
 
 </style>
+
+<script>
+
+function sharePage(){
+
+    if(navigator.share){
+
+        navigator.share({
+            title: document.title,
+            url: window.location.href
+        });
+
+    }else{
+
+        navigator.clipboard.writeText(window.location.href);
+
+        alert("Page link copied!");
+    }
+
+}
+
+</script>
