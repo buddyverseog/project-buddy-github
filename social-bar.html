@@ -1,0 +1,66 @@
+<div class="social-floating">
+
+    <a href="#" class="social-btn share" onclick="sharePage(); return false;" title="Share">
+        📤
+    </a>
+
+    <a href="https://t.me/solutionbuddy10"
+       target="_blank"
+       class="social-btn telegram"
+       title="Telegram">
+        ✈️
+    </a>
+
+    <a href="https://www.instagram.com/solutionbuddy.in?igsh=c2d4bzE4bWRjY2Zu"
+       target="_blank"
+       class="social-btn instagram"
+       title="Instagram">
+        📷
+    </a>
+
+    <a href="https://play.google.com/store/apps/details?id=com.solutionbuddy.app"
+       target="_blank"
+       class="social-btn playstore"
+       title="Download App">
+        ▶
+    </a>
+
+</div>
+
+<style>
+
+.social-floating{
+    position:fixed;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:9999;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.social-btn{
+    width:50px;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    text-decoration:none;
+    font-size:22px;
+    color:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.social-btn:hover{
+    transform:scale(1.08);
+}
+
+.share{background:#0D6EFD;}
+.telegram{background:#229ED9;}
+.instagram{background:#E1306C;}
+.playstore{background:#34A853;}
+
+</style>

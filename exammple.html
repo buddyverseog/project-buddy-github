@@ -1,0 +1,20 @@
+<html>
+    <title ashish> </title>
+        <body<div id="social-container"></div>
+
+<script>
+fetch("social-bar.html")
+.then(response => {
+    console.log("Status:", response.status);
+    return response.text();
+})
+.then(data => {
+    console.log("Loaded");
+    document.getElementById("social-container").innerHTML = data;
+})
+.catch(error => {
+    console.log("Error:", error);
+});
+</script>
+</body>
+</html> 
