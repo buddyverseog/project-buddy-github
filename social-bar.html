@@ -34,67 +34,74 @@
 </div>
 
 <style>
-
 .social-floating{
-    position:fixed;
-    right:15px;
-    top:50%;
-    transform:translateY(-50%);
+
+    position:absolute;
+
+    right:8px;      /* was 15px */
+
+    top:450px;      /* moves it slightly lower */
+
     z-index:9999;
 
     display:flex;
+
     flex-direction:column;
-    gap:12px;
+
+    gap:6px;        /* was 12px */
 }
 
 .social-btn{
-    width: 80x;px;
-    height:80px;
+
+    width:50px;     /* was 80px */
+    height:50px;    /* was 80px */
 
     border-radius:50%;
 
     background:#ffffff;
 
     display:flex;
-    align-items:center;
-    justify-content:center;
 
-    /*box-shadow:0 4px 12px rgba(0,0,0,.25);*/
+    align-items:center;
+
+    justify-content:center;
 
     transition:.3s;
 }
 
-.social-btn:hover{
-    transform:scale(1.1);
-}
-
 .social-btn img{
-    width:80px;
-    height:80px;
+
+    width:28px;     /* was 80px */
+    height:28px;    /* was 80px */
+
     object-fit:contain;
-}
 }
 
 </style>
 
 <script>
-
 function sharePage(){
 
-    if(navigator.share){
+    if (navigator.share) {
 
         navigator.share({
             title: document.title,
+            text: "Check this page on Solution Buddy",
             url: window.location.href
-        });
+        })
+        .catch(err => console.log(err));
 
-    }else{
+    } else {
 
-        navigator.clipboard.writeText(window.location.href);
+        window.prompt(
+            "Copy this link:",
+            window.location.href
+        );
 
-        alert("Page link copied!");
     }
 
 }
 
-</script>
+
+
+</script> 
