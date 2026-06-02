@@ -18,29 +18,20 @@
         <button class="share-btn" onclick="sharePage()">
 </button>
 
-<script>
-function sharePage() {
-
-    const url = window.location.href;
-    const title = document.title;
-
-    if (navigator.share) {
-
+ <script>
+    function sharePage() {
+      if (navigator.share) {
         navigator.share({
-            title: title,
-            text: title,
-            url: url
-        })
-        .catch(err => console.log(err));
-
-    } else {
-
-        navigator.clipboard.writeText(url);
-
-        alert("Link copied!");
+          title: document.title,
+          url: window.location.href
+        }).then(() => {
+          console.log('Thanks for sharing!');
+        }).catch(console.error);
+      } else {
+        alert('Sharing not supported on this device/browser.');
+      }
     }
-}
-</script>
+  </script>
 <button class="share-btn" onclick="sharePage()">
 
     <svg xmlns="http://www.w3.org/2000/svg"
