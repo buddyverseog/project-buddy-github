@@ -16,6 +16,32 @@
 
         <!-- SHARE BUTTON -->
         <button class="share-btn" onclick="sharePage()">
+</button>
+
+<script>
+function sharePage() {
+
+    const url = window.location.href;
+    const title = document.title;
+
+    if (navigator.share) {
+
+        navigator.share({
+            title: title,
+            text: title,
+            url: url
+        })
+        .catch(err => console.log(err));
+
+    } else {
+
+        navigator.clipboard.writeText(url);
+
+        alert("Link copied!");
+    }
+}
+</script>
+<button class="share-btn" onclick="sharePage()">
 
     <svg xmlns="http://www.w3.org/2000/svg"
          width="24"
@@ -339,37 +365,7 @@
 }
 
 </style>
-<script>
 
-async function sharePage() {
-
-    const pageTitle = document.title;
-    const pageUrl = window.location.href;
-
-    try {
-
-        if (navigator.share) {
-
-            await navigator.share({
-                title: pageTitle,
-                text: pageTitle,
-                url: pageUrl
-            });
-
-        } else {
-
-            await navigator.clipboard.writeText(pageUrl);
-
-            alert("Page link copied!");
-        }
-
-    } catch (error) {
-
-        console.log(error);
-    }
-}
-
-</script>
 <script>
 
 /* ===================================== */
