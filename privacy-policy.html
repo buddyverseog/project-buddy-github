@@ -263,29 +263,31 @@ body{
 fetch("navbar.html")
 .then(response => response.text())
 .then(data => {
-    document.getElementById("navbar-container").innerHTML = data;
+    const container = document.getElementById("navbar-container");
+    const template = document.createElement("template");
+
+    template.innerHTML = data.trim();
+
+    const scripts = Array.from(template.content.querySelectorAll("script"));
+    scripts.forEach(script => script.remove());
+
+    container.innerHTML = "";
+    container.appendChild(template.content.cloneNode(true));
+
+    scripts.forEach(oldScript => {
+        const newScript = document.createElement("script");
+
+        Array.from(oldScript.attributes).forEach(attr => {
+            newScript.setAttribute(attr.name, attr.value);
+        });
+
+        newScript.textContent = oldScript.textContent;
+        document.body.appendChild(newScript);
+    });
+})
+.catch(error => {
+    console.error("Failed to load navbar:", error);
 });
-
-</script>
-
-<script>
-
-function toggleMenu(){
-
-    const menu =
-    document.getElementById("mobileMenu");
-
-    const overlay =
-    document.getElementById("overlay");
-
-    if(menu){
-        menu.classList.toggle("show");
-    }
-
-    if(overlay){
-        overlay.classList.toggle("show");
-    }
-}
 
 </script>
 
