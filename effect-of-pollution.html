@@ -152,16 +152,7 @@ Make a presentation on pollution of Ganga and Yamuna Rivers and effects of air p
 
 <div id="pdf-container"></div>
 
-<div class="bottom-back">
 
-<a href="project-class10.html"
-class="bottom-btn">
-
-← Back to Projects
-
-</a>
-
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
@@ -256,7 +247,79 @@ toggleTheme();
 };
 
 </script>
+<!-- WhatsApp Share Button -->
 
+<a href="#"
+   onclick="shareProject(); return false;"
+   class="whatsapp-share">
+
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/whatsapp.svg"
+         alt="Share">
+
+</a>
+
+<style>
+
+.whatsapp-share{
+
+    position:fixed;
+
+    bottom:20px;
+
+    right:20px;
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    background:#25D366;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
+
+    z-index:9999;
+}
+
+.whatsapp-share img{
+
+    width:35px;
+
+    height:35px;
+
+    filter:invert(1);
+}
+
+</style>
+
+<script>
+
+function shareProject(){
+
+    const title = document.title;
+
+    const link = window.location.href;
+
+    const message =
+    title + "\n\n" + link;
+
+    navigator.clipboard.writeText(link);
+
+    window.open(
+        "https://wa.me/?text=" +
+        encodeURIComponent(message),
+        "_blank"
+    );
+
+}
+
+</script>
 </body>
 
 </html>
