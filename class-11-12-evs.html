@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Class 10 Projects</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f8fafc;
+}
+
+.page-header{
+
+    background:linear-gradient(
+        135deg,
+        #0D6EFD,
+        #071C5B
+    );
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px 20px;
+}
+
+.page-header h1{
+
+    font-size:28px;
+}
+
+.container{
+
+    padding:20px;
+}
+
+.project-grid{
+
+    display:grid;
+
+    gap:18px;
+
+    margin-top:20px;
+}
+
+.project-card{
+
+    display:block;
+
+    text-decoration:none;
+
+    background:white;
+
+    color:#111827;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+
+    transition:0.3s;
+}
+
+.project-card:hover{
+
+    transform:translateY(-3px);
+}
+
+.project-card h2{
+
+    color:#071C5B;
+
+    margin-bottom:8px;
+}
+
+.project-card p{
+
+    color:#666;
+}
+
+.bottom-home{
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.home-btn{
+
+    display:inline-block;
+
+    background:#0D6EFD;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 24px;
+
+    border-radius:10px;
+
+    font-weight:600;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="navbar-container"></div>
+
+<section class="page-header">
+
+    <h1>Class 11 & 12 EVS Projects</h1>
+
+    <p>Select From Below </p>
+
+</section>
+
+<div class="container">
+
+    <div class="project-grid">
+
+        <a href="11th-evs-project.html" class="project-card">
+
+            <h2>11th EVS Projects</h2>
+
+            <p>Solution with PDF</p>
+
+        </a>
+
+        <a href="12th-evs-project.html" class="project-card">
+
+            <h2>12th EVS Projects</h2>
+
+            <p>Solution with PDF</p>
+
+        </a>
+
+    </div>
+
+</div>
+
+<div class="bottom-home">
+
+    <a href="index.html" class="home-btn">
+
+        ← Back to Home
+
+    </a>
+
+</div>
+
+<script>
+
+fetch("navbar.html")
+.then(response => response.text())
+.then(data => {
+    const container = document.getElementById("navbar-container");
+    const template = document.createElement("template");
+
+    template.innerHTML = data.trim();
+
+    const scripts = Array.from(template.content.querySelectorAll("script"));
+    scripts.forEach(script => script.remove());
+
+    container.innerHTML = "";
+    container.appendChild(template.content.cloneNode(true));
+
+    scripts.forEach(oldScript => {
+        const newScript = document.createElement("script");
+
+        Array.from(oldScript.attributes).forEach(attr => {
+            newScript.setAttribute(attr.name, attr.value);
+        });
+
+        newScript.textContent = oldScript.textContent;
+        document.body.appendChild(newScript);
+    });
+})
+.catch(error => {
+    console.error("Failed to load navbar:", error);
+});
+
+</script>
+
+</body>
+
+</html>
