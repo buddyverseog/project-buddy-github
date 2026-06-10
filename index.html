@@ -483,6 +483,72 @@ fetch("social-bar.html")
 });
 </script> 
 ---->
+<!-- TOOLS FLOATING BUTTON -->
 
+<a href="tools.html" class="tools-fab">
+
+    <img src="tools-icon.png" alt="Tools">
+
+</a>
+
+<style>
+
+.tools-fab{
+
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
+
+    width:55px;
+
+    height:55px;
+
+    z-index:9999;
+
+    transition:.3s;
+
+    cursor:pointer;
+}
+
+.tools-fab img{
+
+    width:100%;
+
+    height:100%;
+
+    border-radius:50%;
+
+    display:block;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+
+.tools-fab:hover{
+
+    transform:scale(1.08);
+}
+.tools-fab{
+
+    animation:floatTool 2.5s ease-in-out infinite;
+}
+
+@keyframes floatTool{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+</style>
 </body>
 </html>
