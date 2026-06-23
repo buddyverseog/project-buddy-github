@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://projectbuddyofficial.netlify.app/sitemap.xml
