@@ -13,7 +13,7 @@
 <style>
     
 
-/`/* ============================== */
+/* ============================== */
 /* RESET */
 /* ============================== */
 
@@ -551,5 +551,26 @@ fetch("social-bar.html")
 
 }
 </style>
+
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+    const SUPABASE_URL = "https://yrtnmtjmxnldfjjhqazw.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "YOUR_PUBLISHABLE_KEY";
+
+    const supabaseClient = supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+    document.body.insertAdjacentHTML(
+    "beforeend",
+    "<p style='position:fixed;bottom:5px;left:5px;z-index:99999;background:#071C5B;color:white;padding:8px;border-radius:8px;'>Supabase connected ✅</p>"
+);
+</script>
 </body>
 </html>
