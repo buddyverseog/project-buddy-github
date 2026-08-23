@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Create Account | Project Buddy</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -90,12 +95,14 @@
 
         button:disabled {
             opacity: 0.6;
+            cursor: not-allowed;
         }
 
         #message {
             margin-top: 15px;
             text-align: center;
             font-size: 14px;
+            line-height: 1.5;
         }
 
         .login-link {
@@ -110,14 +117,20 @@
             font-weight: 600;
             text-decoration: none;
         }
+
     </style>
+
 </head>
 
 <body>
 
 <div class="card">
 
-    <img src="pb-logo.png" class="logo" alt="Project Buddy">
+    <img
+        src="pb-logo.png"
+        class="logo"
+        alt="Project Buddy"
+    >
 
     <h1>Create Account</h1>
 
@@ -125,9 +138,13 @@
         Join Project Buddy
     </p>
 
+
     <form id="signupForm">
 
-        <label for="fullName">Full Name</label>
+        <label for="fullName">
+            Full Name
+        </label>
+
         <input
             type="text"
             id="fullName"
@@ -135,7 +152,11 @@
             required
         >
 
-        <label for="email">Email</label>
+
+        <label for="email">
+            Email
+        </label>
+
         <input
             type="email"
             id="email"
@@ -143,7 +164,11 @@
             required
         >
 
-        <label for="password">Password</label>
+
+        <label for="password">
+            Password
+        </label>
+
         <input
             type="password"
             id="password"
@@ -152,38 +177,59 @@
             required
         >
 
-        <label for="schoolName">School / College Name</label>
+
+        <label for="schoolName">
+            School / College Name
+        </label>
+
         <input
             type="text"
             id="schoolName"
             placeholder="Enter your school or college"
         >
 
-        <label for="className">Class</label>
+
+        <label for="className">
+            Class
+        </label>
+
         <input
             type="text"
             id="className"
             placeholder="Example: 10th"
         >
 
-        <button type="submit" id="signupButton">
+
+        <button
+            type="submit"
+            id="signupButton"
+        >
             Create Account
         </button>
 
     </form>
 
+
     <div id="message"></div>
 
+
     <p class="login-link">
+
         Already have an account?
-        <a href="login.html">Login</a>
+
+        <a href="login.html">
+            Login
+        </a>
+
     </p>
 
 </div>
 
 
 <!-- Supabase -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
 
@@ -193,39 +239,68 @@ const SUPABASE_URL =
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_YDjPx5ycbNhQK8dGriAwXQ_VdSqUSOw";
 
-const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-);
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
 
 
-const form = document.getElementById("signupForm");
-const button = document.getElementById("signupButton");
-const message = document.getElementById("message");
+const form =
+    document.getElementById("signupForm");
+
+const button =
+    document.getElementById("signupButton");
+
+const message =
+    document.getElementById("message");
 
 
 form.addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
+
     const fullName =
-        document.getElementById("fullName").value.trim();
+        document
+            .getElementById("fullName")
+            .value
+            .trim();
+
 
     const email =
-        document.getElementById("email").value.trim();
+        document
+            .getElementById("email")
+            .value
+            .trim();
+
 
     const password =
-        document.getElementById("password").value;
+        document
+            .getElementById("password")
+            .value;
+
 
     const schoolName =
-        document.getElementById("schoolName").value.trim();
+        document
+            .getElementById("schoolName")
+            .value
+            .trim();
+
 
     const className =
-        document.getElementById("className").value.trim();
+        document
+            .getElementById("className")
+            .value
+            .trim();
 
 
     button.disabled = true;
-    button.textContent = "Creating account...";
+
+    button.textContent =
+        "Creating account...";
+
 
     message.textContent = "";
 
@@ -234,8 +309,27 @@ form.addEventListener("submit", async function(event) {
 
         const { data, error } =
             await supabaseClient.auth.signUp({
+
                 email: email,
-                password: password
+
+                password: password,
+
+                options: {
+
+                    data: {
+
+                        full_name: fullName,
+
+                        school_name:
+                            schoolName || null,
+
+                        class:
+                            className || null
+
+                    }
+
+                }
+
             });
 
 
@@ -244,53 +338,63 @@ form.addEventListener("submit", async function(event) {
         }
 
 
-        const user = data.user;
+        if (!data.user) {
 
+            throw new Error(
+                "Account could not be created."
+            );
 
-        if (!user) {
-            throw new Error("Account could not be created.");
         }
 
 
-        const { error: profileError } =
-            await supabaseClient
-                .from("profiles")
-                .insert({
-                    id: user.id,
-                    full_name: fullName,
-                    school_name: schoolName || null,
-                    class: className || null
-                });
+        /*
+         * The profile is NOT inserted here.
+         *
+         * Supabase automatically creates
+         * the profile using the database trigger.
+         */
 
 
-        if (profileError) {
-            throw profileError;
-        }
+        message.style.color =
+            "#16803c";
 
-
-        message.style.color = "#16803c";
 
         message.textContent =
-            "Account created successfully!";
+            "Account created! Please check your email and verify your account before logging in.";
 
 
         form.reset();
 
-        button.textContent = "Account Created";
+
+        button.textContent =
+            "Account Created";
 
 
-    } catch (error) {
+    }
 
-        console.error(error);
+    catch (error) {
 
-        message.style.color = "#d93025";
+        console.error(
+            "Signup error:",
+            error
+        );
+
+
+        message.style.color =
+            "#d93025";
+
 
         message.textContent =
             error.message;
 
-        button.disabled = false;
 
-        button.textContent = "Create Account";
+        button.disabled =
+            false;
+
+
+        button.textContent =
+            "Create Account";
+
     }
 
 });
@@ -298,4 +402,5 @@ form.addEventListener("submit", async function(event) {
 </script>
 
 </body>
+
 </html>
