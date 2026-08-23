@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Project Buddy</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0D6EFD, #071C5B);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            border-radius: 24px;
+            padding: 30px 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            display: block;
+            width: 65px;
+            margin: 0 auto 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #071C5B;
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #071C5B;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            outline: none;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        input:focus {
+            border-color: #0D6EFD;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: #0D6EFD;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .login-link a {
+            color: #0D6EFD;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <img src="pb-logo.png" class="logo" alt="Project Buddy">
+
+    <h1>Create Account</h1>
+
+    <p class="subtitle">
+        Join Project Buddy
+    </p>
+
+    <form id="signupForm">
+
+        <label for="fullName">Full Name</label>
+        <input
+            type="text"
+            id="fullName"
+            placeholder="Enter your name"
+            required
+        >
+
+        <label for="email">Email</label>
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+        >
+
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Create a password"
+            minlength="6"
+            required
+        >
+
+        <label for="schoolName">School / College Name</label>
+        <input
+            type="text"
+            id="schoolName"
+            placeholder="Enter your school or college"
+        >
+
+        <label for="className">Class</label>
+        <input
+            type="text"
+            id="className"
+            placeholder="Example: 10th"
+        >
+
+        <button type="submit" id="signupButton">
+            Create Account
+        </button>
+
+    </form>
+
+    <div id="message"></div>
+
+    <p class="login-link">
+        Already have an account?
+        <a href="login.html">Login</a>
+    </p>
+
+</div>
+
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+    "https://yrtnmtjmxnldfjjhqazw.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_YDjPx5ycbNhQK8dGriAwXQ_VdSqUSOw";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+
+const form = document.getElementById("signupForm");
+const button = document.getElementById("signupButton");
+const message = document.getElementById("message");
+
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const fullName =
+        document.getElementById("fullName").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const schoolName =
+        document.getElementById("schoolName").value.trim();
+
+    const className =
+        document.getElementById("className").value.trim();
+
+
+    button.disabled = true;
+    button.textContent = "Creating account...";
+
+    message.textContent = "";
+
+
+    try {
+
+        const { data, error } =
+            await supabaseClient.auth.signUp({
+                email: email,
+                password: password
+            });
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        const user = data.user;
+
+
+        if (!user) {
+            throw new Error("Account could not be created.");
+        }
+
+
+        const { error: profileError } =
+            await supabaseClient
+                .from("profiles")
+                .insert({
+                    id: user.id,
+                    full_name: fullName,
+                    school_name: schoolName || null,
+                    class: className || null
+                });
+
+
+        if (profileError) {
+            throw profileError;
+        }
+
+
+        message.style.color = "#16803c";
+
+        message.textContent =
+            "Account created successfully!";
+
+
+        form.reset();
+
+        button.textContent = "Account Created";
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.style.color = "#d93025";
+
+        message.textContent =
+            error.message;
+
+        button.disabled = false;
+
+        button.textContent = "Create Account";
+    }
+
+});
+
+</script>
+
+</body>
+</html>
